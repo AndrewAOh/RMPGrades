@@ -1,0 +1,50 @@
+{
+  "manifest_version": 3,
+  "name": "USC Schedule Helper+",
+  "description": "Shows grade distribution on RateMyProfessor!",
+  "version": "1.0",
+  "action": {
+    "default_icon": "images/Logo.png",
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "service_worker": "content/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://classes.usc.edu/*/classes/*",
+        "*://webreg.usc.edu/*",
+        "https://www.ratemyprofessors.com/professor/*"
+      ],
+      "css": ["content/content.css"],
+      "js": [
+        "content/jquery.js",
+        "content/content.js",
+        "content/webreg.js",
+        "content/background.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "storage",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "*://classes.usc.edu/*/classes/*",
+    "*://webreg.usc.edu/*",
+    "https://www.ratemyprofessors.com/professor/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "data/*",
+        "content/*",
+        "images/*"
+      ],
+      "matches": [
+        "*://*/*"
+      ]
+    }
+  ]
+}
