@@ -29,16 +29,21 @@ body {
   margin-left: 0px;
   margin-top: 0px;
   margin-right: 0px;
-  padding: 10px;
-
+  padding: 5px;
   display:flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .header img{
-  height: 35px;
+  height: 70px;
   margin-right: 4px;
-  width: 35px;
+  width: 70px;
+}
+.headerDiv i{
+  margin-left: auto;
+}
+.headerDiv img, .headerDiv h1{
+  margin-right: 5px;
 }
 #cta-close{
   font-size: 30px;

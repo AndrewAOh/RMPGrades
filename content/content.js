@@ -11,12 +11,12 @@ chrome.runtime.onMessage.addListener((message) => {
 const currentURL = window.location.href;
 console.log("Current URL: " + currentURL);
 if (currentURL.includes("https://www.ratemyprofessors.com/professor/")) {
-    console.log("Inside the site");
+    // console.log("Inside the site");
     
     // Function to fetch and process all hidden data
     function fetchAllData() {
         numRefresh += 1;
-        console.log("Number of refresh: " + numRefresh);
+        // console.log("Number of refresh: " + numRefresh);
         // Function to simulate clicking the "Load More Ratings" button
         function clickLoadMoreButton() {
             const loadMoreButton = document.querySelector(".Buttons__Button-sc-19xdot-1");
@@ -132,8 +132,8 @@ if (currentURL.includes("https://www.ratemyprofessors.com/professor/")) {
             overBRate = overBRate.toFixed(0);
         } else overBRate = "--";
     
-        console.log("Average Grade for this professor: " + avgGrade);
-        console.log("Number of grade ratings: " + numberRatings);
+        // console.log("Average Grade for this professor: " + avgGrade);
+        // console.log("Number of grade ratings: " + numberRatings);
     
         let convertedGrade = convertToLetterGrade(avgGrade);
     
@@ -246,9 +246,9 @@ if (currentURL.includes("https://www.ratemyprofessors.com/professor/")) {
         // 1st new row
         let profStatsDiv2 = document.createElement("div");
         let avgGradeDiv = createFeedbackItemDiv("Avg Grade", convertedGrade);
-        console.log("Avg Grade: " + convertedGrade)
+        // console.log("Avg Grade: " + convertedGrade)
         let gradePointElem = createFeedbackItemDiv("Class GPA", avgGrade);
-        console.log("Class GPA: " + avgGrade)
+        // console.log("Class GPA: " + avgGrade)
         avgGradeDiv.classList.add("avgGradeDiv");
         gradePointElem.classList.add("gradePointElem");
         profStatsDiv2.appendChild(avgGradeDiv)
@@ -305,7 +305,7 @@ if (currentURL.includes("https://www.ratemyprofessors.com/professor/")) {
         reloadButton.classList.add(".IconButton__StyledIconButton-eamykg-0", ".dpugOF", ".TeacherInfo__RateIconButton", ".gXtLCL");
         reloadButton.style.display = "flex";
         reloadButton.style.alignItems = "center";
-
+        reloadButton.style.marginTop = "-4px";
 
         // Create a <link> element for Font Awesome
         var materialIconsStylesheet = document.createElement("link");

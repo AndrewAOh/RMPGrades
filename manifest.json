@@ -4,7 +4,7 @@
   "description": "View a professor's grade distribution on RateMyProfessor, showing the grades students receive in each class taught by that professor.",
   "version": "1.0.0",
   "action": {
-    "default_icon": "images/Logo.png",
+    "default_icon": "images/RMPGradesIconLogo.png",
     "default_popup": "popup/popup.html"
   },
   "background": {
