@@ -1,12 +1,12 @@
 let numRefresh = 0;
 chrome.runtime.onMessage.addListener((message) => {
-    if (message.url && message.url.includes("ratemyprof")) {
+    if (message.url && message.url.includes("https://www.ratemyprofessors.com/professor/")) {
       console.log("Professor page detected:", message.url);
       // Now you can call your script to process data (runScript())
       numRefresh = 0;
       location.reload();
     }
-  });
+});
 
 const currentURL = window.location.href;
 console.log("Current URL: " + currentURL);
@@ -301,7 +301,36 @@ if (currentURL.includes("https://www.ratemyprofessors.com/professor/")) {
         reloadButtonDiv.classList.add("reloadButtonClass");
         reloadButtonDiv.classList.add(".EeKLq");
         var reloadButton = document.createElement("button");
-        reloadButton.textContent = "Reload"; // Button text
+        // IconButton__StyledIconButton-eamykg-0 dpugOF TeacherInfo__RateIconButton-ti1fio-3 gXtLCL
+        reloadButton.classList.add(".IconButton__StyledIconButton-eamykg-0", ".dpugOF", ".TeacherInfo__RateIconButton", ".gXtLCL");
+        reloadButton.style.display = "flex";
+        reloadButton.style.alignItems = "center";
+
+
+        // Create a <link> element for Font Awesome
+        var materialIconsStylesheet = document.createElement("link");
+        // Set the attributes of the <link> element for Google Material Icons
+        materialIconsStylesheet.rel = "stylesheet";
+        materialIconsStylesheet.type = "text/css";
+        materialIconsStylesheet.href = "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+        // Append the Google Material Icons <link> element to the <head> section of the document
+        document.head.appendChild(materialIconsStylesheet);
+        var reloadSpan = document.createElement("span")
+        reloadSpan.textContent = "Reload";
+        reloadButton.appendChild(reloadSpan);
+        var reloadIcon = document.createElement("i");
+        // Add Font Awesome classes to the icon
+        reloadIcon.classList.add("material-icons");
+        reloadIcon.textContent = "refresh";
+        // Append the icon to the button
+        reloadSpan.style.display = "inline-block";
+        reloadIcon.style.display = "inline-block";
+        reloadSpan.style.marginLeft = "2px";
+        reloadSpan.style.marginRight = "2px";
+        reloadButton.appendChild(reloadIcon);
+
+        // reloadButton.textContent = "Reload"; // Button text
         reloadButtonDiv.appendChild(reloadButton);
 
     
@@ -383,7 +412,9 @@ if (currentURL.includes("https://www.ratemyprofessors.com/professor/")) {
     function calculateColorFromGrade(grade) {
         // Convert grade to a number
         let numericGrade = parseFloat(grade);
-        if (numericGrade > 3.7) {
+        if (isNaN(numericGrade)){
+            return 'FFFFFF';
+        } else if (numericGrade > 3.7) {
             return '#13bf13'; // A
         } else if (numericGrade > 3.3) {
             return '#8ac93c'; // A-
@@ -403,7 +434,9 @@ if (currentURL.includes("https://www.ratemyprofessors.com/professor/")) {
     // Helper function to calculate color based on grade value
     function calculateColorFromLetterGrade(letterGrade) {
         // Convert grade to a number
-        if (letterGrade === "A+") {
+        if (letterGrade === "--"){
+            return 'FFFFFF';
+        } else if (letterGrade === "A+") {
             return '#13bf13'; // A
         }
         else if (letterGrade === "A") {
@@ -426,7 +459,9 @@ if (currentURL.includes("https://www.ratemyprofessors.com/professor/")) {
     function calculateColorFromPassRate(passRate) {
         // Convert passRate to a number
         let numericPass = parseFloat(passRate);
-        if (numericPass == 100) {
+        if (isNaN(numericPass)){
+            return 'FFFFFF';
+        } else if (numericPass == 100) {
             return '#13bf13';
         } else if (numericPass >= 95) {
             return '#8ac93c';
@@ -445,7 +480,9 @@ if (currentURL.includes("https://www.ratemyprofessors.com/professor/")) {
     
     function calculateColorFromARate(aRate) {
         let numericARate = parseFloat(aRate);
-        if (numericARate >= 50) {
+        if (isNaN(numericARate)){
+            return 'FFFFFF';
+        } else if (numericARate >= 50) {
             return '#13bf13';
         } else if (numericARate >= 35) {
             return '#8ac93c';
@@ -464,7 +501,9 @@ if (currentURL.includes("https://www.ratemyprofessors.com/professor/")) {
     
     function calculateColorFromOverBRate(overBRate) {
         let numericOverBRate = parseFloat(overBRate);
-        if (numericOverBRate >= 95) {
+        if (isNaN(numericOverBRate)){
+            return 'FFFFFF';
+        } else if (numericOverBRate >= 95) {
             return '#13bf13';
         } else if (numericOverBRate >= 90) {
             return '#8ac93c';
@@ -502,12 +541,9 @@ if (currentURL.includes("https://www.ratemyprofessors.com/professor/")) {
     // Function to fetch and process all hidden data
     fetchAllData();
     
-    
     // Function to run the script
     function runScript() {
         fetchAllData();
     }
-
-
 }
 

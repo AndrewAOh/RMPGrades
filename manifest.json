@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "RMP Grade Helper",
-  "description": "Shows grade distribution on RateMyProfessor!",
-  "version": "1.0",
+  "description": "View a professor's grade distribution on RateMyProfessor, showing the grades students receive in each class taught by that professor.",
+  "version": "1.0.0",
   "action": {
     "default_icon": "images/Logo.png",
     "default_popup": "popup/popup.html"
@@ -24,7 +24,8 @@
   ],
   "permissions": [
     "storage",
-    "webNavigation"
+    "webNavigation",
+    "activeTab"
   ],
   "host_permissions": [
     "https://www.ratemyprofessors.com/professor/*"
